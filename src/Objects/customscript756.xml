@@ -1,0 +1,24 @@
+<scheduledscript scriptid="customscript756">
+  <description></description>
+  <isinactive>F</isinactive>
+  <name>Delete a Record</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <scriptfile>[/SuiteScripts/dlete a record.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeploy_delete_a_record">
+      <isdeployed>T</isdeployed>
+      <loglevel>DEBUG</loglevel>
+      <status>NOTSCHEDULED</status>
+      <title>Delete a Record</title>
+      <recurrence>
+        <single>
+          <repeat></repeat>
+          <startdate>2026-09-18</startdate>
+          <starttime>01:00:00Z</starttime>
+        </single>
+      </recurrence>
+    </scriptdeployment>
+  </scriptdeployments>
+</scheduledscript>
