@@ -1,91 +1,242 @@
 /**
- * @NApiVersion 2.1
+ * @NApiVersion 2.x
  * @NScriptType ClientScript
+ * @NModuleScope SameAccount
  */
-define(['N/ui/dialog'], function(dialog) {
-
-    function fieldChanged(scriptContext) {
-
-        const currentRecord = scriptContext.currentRecord;
-
-        if (scriptContext.fieldId === 'location') {
-
-            const bodyLocation = currentRecord.getValue({
-                fieldId: 'location'
-            });
-
-            console.log('Body Location:', bodyLocation);
-
-            const lineCount = currentRecord.getLineCount({
-                sublistId: 'item'
-            });
-
-            for (let i = 0; i < lineCount; i++) {
-
-                currentRecord.selectLine({
-                    sublistId: 'item',
-                    line: i
-                });
-
-                currentRecord.setCurrentSublistValue({
-                    sublistId: 'item',
-                    fieldId: 'location',
-                    value: bodyLocation
-                });
-
-                currentRecord.commitLine({
-                    sublistId: 'item'
-                });
-
-                console.log('Location copied to Line:', i + 1);
-            }
-        }
+define(['N/ui/dialog'],
+/**
+ * @param{dialog} dialog
+ */
+function(dialog) {
+   
+    /**
+     * Function to be executed after page is initialized.
+     *
+     * @param {Object} scriptContext
+     * @param {Record} scriptContext.currentRecord - Current form record
+     * @param {string} scriptContext.mode - The mode in which the record is being accessed (create, copy, or edit)
+     *
+     * @since 2015.2
+     */
+    function pageInit(scriptContext) {
+ 
     }
-
-    function saveRecord(scriptContext) {
-
-        const currentRecord = scriptContext.currentRecord;
-
-        const bodyLocation = currentRecord.getValue({
+ 
+    /**
+     * Function to be executed when field is changed.
+     *
+     * @param {Object} scriptContext
+     * @param {Record} scriptContext.currentRecord - Current form record
+     * @param {string} scriptContext.sublistId - Sublist name
+     * @param {string} scriptContext.fieldId - Field name
+     * @param {number} scriptContext.lineNum - Line number. Will be undefined if not a sublist or matrix field
+     * @param {number} scriptContext.columnNum - Line number. Will be undefined if not a matrix field
+     *
+     * @since 2015.2
+     */
+function fieldChanged(scriptContext) {
+ 
+    if (scriptContext.fieldId === 'location' && !scriptContext.sublistId) {
+       
+ 
+        const location = scriptContext.currentRecord.getValue({
             fieldId: 'location'
         });
-
-        const lineCount = currentRecord.getLineCount({
+        const lineCount = scriptContext.currentRecord.getLineCount({ sublistId: 'item' });
+       
+       
+        for (var i = 0; i < lineCount; i++) {
+           
+            scriptContext.currentRecord.selectLine({
+                sublistId: 'item',
+                line: i
+            });
+            scriptContext.currentRecord.setCurrentSublistValue({
+                sublistId: 'item',
+                fieldId: 'location',
+                value: location,
+                ignoreFieldChange: true
+            });
+           
+            scriptContext.currentRecord.commitLine({
+                sublistId: 'item'
+            });
+        }
+     
+ 
+     
+   }
+ 
+ 
+}
+ 
+ 
+ 
+ 
+ 
+ 
+    /**
+     * Function to be executed when field is slaved.
+     *
+     * @param {Object} scriptContext
+     * @param {Record} scriptContext.currentRecord - Current form record
+     * @param {string} scriptContext.sublistId - Sublist name
+     * @param {string} scriptContext.fieldId - Field name
+     *
+     * @since 2015.2
+     */
+    function postSourcing(scriptContext) {
+       
+    }
+ 
+ 
+ 
+ 
+ 
+    /**
+     * Function to be executed after sublist is inserted, removed, or edited.
+     *
+     * @param {Object} scriptContext
+     * @param {Record} scriptContext.currentRecord - Current form record
+     * @param {string} scriptContext.sublistId - Sublist name
+     *
+     * @since 2015.2
+     */
+    function sublistChanged(scriptContext) {
+ 
+    }
+ 
+    /**
+     * Function to be executed after line is selected.
+     *
+     * @param {Object} scriptContext
+     * @param {Record} scriptContext.currentRecord - Current form record
+     * @param {string} scriptContext.sublistId - Sublist name
+     *
+     * @since 2015.2
+     */
+    function lineInit(scriptContext) {
+ 
+    }
+ 
+    /**
+     * Validation function to be executed when field is changed.
+     *
+     * @param {Object} scriptContext
+     * @param {Record} scriptContext.currentRecord - Current form record
+     * @param {string} scriptContext.sublistId - Sublist name
+     * @param {string} scriptContext.fieldId - Field name
+     * @param {number} scriptContext.lineNum - Line number. Will be undefined if not a sublist or matrix field
+     * @param {number} scriptContext.columnNum - Line number. Will be undefined if not a matrix field
+     *
+     * @returns {boolean} Return true if field is valid
+     *
+     * @since 2015.2
+     */
+    function validateField(scriptContext) {
+ 
+    }
+ 
+    /**
+     * Validation function to be executed when sublist line is committed.
+     *
+     * @param {Object} scriptContext
+     * @param {Record} scriptContext.currentRecord - Current form record
+     * @param {string} scriptContext.sublistId - Sublist name
+     *
+     * @returns {boolean} Return true if sublist line is valid
+     *
+     * @since 2015.2
+     */
+    function validateLine(scriptContext) {
+ 
+    }
+ 
+    /**
+     * Validation function to be executed when sublist line is inserted.
+     *
+     * @param {Object} scriptContext
+     * @param {Record} scriptContext.currentRecord - Current form record
+     * @param {string} scriptContext.sublistId - Sublist name
+     *
+     * @returns {boolean} Return true if sublist line is valid
+     *
+     * @since 2015.2
+     */
+    function validateInsert(scriptContext) {
+ 
+    }
+ 
+    /**
+     * Validation function to be executed when record is deleted.
+     *
+     * @param {Object} scriptContext
+     * @param {Record} scriptContext.currentRecord - Current form record
+     * @param {string} scriptContext.sublistId - Sublist name
+     *
+     * @returns {boolean} Return true if sublist line is valid
+     *
+     * @since 2015.2
+     */
+    function validateDelete(scriptContext) {
+ 
+    }
+ 
+    /**
+     * Validation function to be executed when record is saved.
+     *
+     * @param {Object} scriptContext
+     * @param {Record} scriptContext.currentRecord - Current form record
+     * @returns {boolean} Return true if record is valid
+     *
+     * @since 2015.2
+     */
+    function saveRecord(scriptContext) {
+        const bodyLocation = scriptContext.currentRecord.getValue({
+            fieldId: 'location'
+        });
+ 
+        const lineCount = scriptContext.currentRecord.getLineCount({
             sublistId: 'item'
         });
-
-        console.log('Validating Locations');
-
-        for (let i = 0; i < lineCount; i++) {
-
-            const lineLocation = currentRecord.getSublistValue({
+ 
+        for (var i = 0; i < lineCount; i++) {
+           
+            const lineLocation = scriptContext.currentRecord.getSublistValue({
                 sublistId: 'item',
                 fieldId: 'location',
                 line: i
             });
-
-            console.log('Line:', i + 1);
-            console.log('Line Location:', lineLocation);
-            console.log('Body Location:', bodyLocation);
-
+ 
             if (lineLocation !== bodyLocation) {
-
                 dialog.alert({
-                    title: 'Location Mismatch',
-                    message: 'Line ' + (i + 1) +
-                             ' location does not match Body Location.'
-                });
-
+                    title: 'Invalid loaction',
+                    message: 'line location must be same as body location'
+                    });
                 return false;
             }
+ 
+           
         }
-
+ 
         return true;
+ 
+ 
+ 
     }
-
+ 
     return {
+        // pageInit: pageInit,
         fieldChanged: fieldChanged,
+        // postSourcing: postSourcing,
+        // sublistChanged: sublistChanged,
+        // lineInit: lineInit,
+        // validateField: validateField,
+        // validateLine: validateLine,
+        // validateInsert: validateInsert,
+        // validateDelete: validateDelete,
         saveRecord: saveRecord
     };
-
+   
 });
+ 
