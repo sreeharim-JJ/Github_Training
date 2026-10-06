@@ -31,9 +31,9 @@ define([], function () {
             background: #6eece6;
             border-radius:10px;">
 
-            <img src="https://td3111354.app.netsuite.com/core/media/media.nl?id=23926&c=TD3111354&h=JMDrOfNSAkEzhomevhUUoRy2Ls3Sl7yQJBgYUb2dQyQ98I_v&fcts=20260928214208&whence="
+            <img src="https://td3111354.app.netsuite.com/core/media/media.nl?id=6640&c=TD3111354&h=PaUNPGqGb9BQ9K4db99qgCgGjAAdXXdmO2qwSZICL3AD-t2t"
                  width="180"
-                 height="100"/>
+                 height="50"/>
 
             <h2 style="color: #b01c2e;">
                 ${greeting}
