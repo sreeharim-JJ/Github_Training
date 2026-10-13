@@ -2,9 +2,11 @@
  * @NApiVersion 2.1
  * @NScriptType WorkflowActionScript
  */
-define([],
-    
-    () => {
+define(['N/record'],
+    /**
+ * @param{record} record
+ */
+    (record) => {
         /**
          * Defines the WorkflowAction script trigger point.
          * @param {Object} scriptContext
@@ -16,8 +18,27 @@ define([],
          * @since 2016.1
          */
         const onAction = (scriptContext) => {
-
+            log.debug('TEST', 'Workflow Action Script Ran');
+            let newRec = scriptContext.newRecord;
+            let customRecord = record.create({
+            type: 'customrecordcustomrecord_task_custom'
+        });
+ 
+        customRecord.setValue({
+            fieldId: 'name',
+            value: newRec.getValue({
+                fieldId: 'title'
+            })
+        });
+        customRecord.setValue({
+            fieldId: 'custrecocustrecord_test_field',
+            value: 'Test Value'
+        });
+        let customRecordId = customRecord.save();
+ 
+        return customRecordId;
+ 
         }
-
+ 
         return {onAction};
     });
