@@ -1,0 +1,24 @@
+<scheduledscript scriptid="customscriptjj_ss_raff_q2">
+  <description></description>
+  <isinactive>F</isinactive>
+  <name>JJ SS RAFT Q2</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <scriptfile>[/SuiteScripts/RAF TEST/jj_ss_raft_q2.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeploy1">
+      <isdeployed>T</isdeployed>
+      <loglevel>DEBUG</loglevel>
+      <status>NOTSCHEDULED</status>
+      <title>JJ SS RAFT Q2</title>
+      <recurrence>
+        <single>
+          <repeat></repeat>
+          <startdate>2026-10-14</startdate>
+          <starttime>01:00:00Z</starttime>
+        </single>
+      </recurrence>
+    </scriptdeployment>
+  </scriptdeployments>
+</scheduledscript>
