@@ -1,3 +1,21 @@
+/******************************************************************************
+ * Company      : ABC Industries
+ * Script Name  : jj_pl_assessment_invoice.js
+ * Script Type  : Portlet
+ *
+ * Description:
+ * Displays overdue invoices and provides alert information on the dashboard.
+ *
+ * Author       : Jobin and Jismi IT Services
+ * Created Date : 24-Sep-2026
+ *
+ * Revision History
+ * ---------------------------------------------------------------------------
+ * Version  Date         Author   Remarks
+ * ---------------------------------------------------------------------------
+ * 1.0      24-Sep-2026  JJI0045  Initial version
+ * 2.1      24-Sep-2026  JJI0045  ABC-5 enhancements
+ ******************************************************************************/
 /**
  * @NApiVersion 2.1
  * @NScriptType Suitelet
