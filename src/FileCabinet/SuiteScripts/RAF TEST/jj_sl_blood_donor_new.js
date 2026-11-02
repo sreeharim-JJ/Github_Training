@@ -3,16 +3,8 @@
  * @NScriptType Suitelet
  */
 define([
-    'N/ui/serverWidget',
-    'N/record',
-    'N/search',
-    'N/format'
-], (
-    serverWidget,
-    record,
-    search,
-    format
-) => {
+    'N/ui/serverWidget','N/record','N/search','N/format'
+], ( serverWidget, record, search, format) => {
 
     const onRequest = (context) => {
 
